@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Lab_6</string>
+    <string name="app_name">NewActivity</string>
+    <string name="btn_with_image">КНОПКА С КАРТИНКОЙ</string>
 </resources>
