@@ -1,6 +1,7 @@
 package com.example.lab_6
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -77,7 +79,21 @@ class MainActivity : AppCompatActivity() {
     fun onImageClick(link: String) {
         val intent = Intent(this, PicViewer::class.java)
         intent.putExtra("picLink", link)
-        startActivity(intent)
+        startActivityForResult(intent, 1)
         Timber.i(link)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == RESULT_OK) {
+            val picLink = data?.getStringExtra("picLink")
+            val snackbar = Snackbar.make(findViewById(R.id.main), "Картинка добавлена в избранное", Snackbar.LENGTH_LONG)
+            snackbar.setAction("Открыть") {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(picLink))
+                startActivity(browserIntent)
+            }
+            snackbar.show()
+        }
     }
 }
