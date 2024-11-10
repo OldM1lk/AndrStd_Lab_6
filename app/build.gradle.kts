@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.lab_6"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.lab_6"
@@ -45,4 +45,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation ("com.jakewharton.timber:timber:5.0.1")
+    implementation ("com.google.code.gson:gson:2.11.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 }
